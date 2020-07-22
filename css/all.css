@@ -365,14 +365,14 @@ a {
     font-size: 20px;
     letter-spacing: 1px; }
 
-.cart-table th, .cart-table td {
-  text-align: left; }
-
-.cart-table th {
-  padding: 10px 15px; }
-
-.cart-table td {
-  padding: 20px 15px; }
+.cart-table {
+  width: 100%; }
+  .cart-table th, .cart-table td {
+    text-align: left; }
+  .cart-table th {
+    padding: 10px 15px; }
+  .cart-table td {
+    padding: 20px 15px; }
 
 .produce-num-td {
   padding: 10px !important; }
