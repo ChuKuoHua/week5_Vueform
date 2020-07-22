@@ -64,8 +64,7 @@
             >
             <span class="sr-only">unread messages</span>
           </button>
-          <div data-offset="40"
-          >
+          <div data-offset="40">
             <div class="dropdown-menu list-cart" v-if="cart.length > 0">
               <div class="mb-2 cart-flex">
                 <h4>購物車</h4>
@@ -183,20 +182,30 @@
                   {{item.price | money}} 元
               </div>
               <div class="card-footer border-top-0 bg-white btn-flex">
-                <button class="btn btn-details btn-sm" type="button" @click="getProduct(item.id)">
-                  <i
-                    class="fas fa-skull fa-spin"
-                    v-if="status.loadingItem === item.id"
-                  ></i>
-                  查看更多
-                </button>
-                <button class="btn btn-shopping btn-sm" type="button" @click="addToCart(item)">
-                  <i
-                    class="fas fa-skull fa-spin"
-                    v-if="status.loadingItem === item.id"
-                  ></i>
-                  加到購物車
-                </button>
+                <div v-if="status.loadingItem === item.id">
+                  <button class="btn btn-details btn-sm" disabled type="button">
+                    <i
+                      class="fas fa-skull fa-spin"
+                      v-if="status.loadingItem === item.id"
+                    ></i>
+                    查看更多
+                  </button>
+                  <button class="btn btn-shopping btn-sm" disabled type="button">
+                    <i
+                      class="fas fa-skull fa-spin"
+                      v-if="status.loadingItem === item.id"
+                    ></i>
+                    加到購物車
+                  </button>
+                </div>
+                <div v-else>
+                  <button class="btn btn-details btn-sm" type="button" @click="getProduct(item.id)">
+                    查看更多
+                  </button>
+                  <button class="btn btn-shopping btn-sm" type="button" @click="addToCart(item)">
+                    加到購物車
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -271,6 +280,19 @@
                 加到購物車
               </button>
             </div>
+            <div v-else-if="product.id === status.loadingItem">
+              <button
+                type="button"
+                class="btn addcart-btn"
+                disabled
+              >
+              <i
+                class="fas fa-skull fa-spin"
+                v-if="product.id === status.loadingItem"
+              ></i>
+                加到購物車
+              </button>
+            </div>
             <div v-else>
               <button
                 type="button"
@@ -279,10 +301,6 @@
                 :cart="cart"
                 :cartTotal="cartTotal"
               >
-                <i
-                  class="fas fa-skull fa-spin"
-                  v-if="product.id === status.loadingItem"
-                ></i>
                 加到購物車
               </button>
             </div>

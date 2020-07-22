@@ -23,6 +23,15 @@ VeeValidate.configure({
 });
 VeeValidate.localize('tw', zh);
 
+// 建立變數放重複的 Swal 屬性
+const Toast = Swal.mixin({
+  toast: true,
+  showConfirmButton: false,
+  timer: 2000,
+  padding: '1em',
+  position: 'top-end',
+});
+
 new Vue({
   el:'#app',
   data(){
@@ -109,27 +118,17 @@ new Vue({
         vm.status.loadingItem = '';
         $('#productModal').modal('hide');
         vm.getCart();
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '已加入購物車',
           icon: 'success',
-          showConfirmButton: false,
-          timer: 2000,
-          padding: '1em',
-          position: 'bottom-end',
         });
       }).catch(err =>{
         vm.status.loadingItem = '';
         console.log(err.response.data.errors);
         $('#productModal').modal('hide');
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: `${err.response.data.errors}`,
           icon: 'warning',
-          showConfirmButton: false,
-          timer: 2000,
-          padding: '1em',
-          position: 'bottom-end',
         });
       });
     },
@@ -164,26 +163,16 @@ new Vue({
       axios.delete(url).then(() => {
         vm.isLoading = false;
         vm.getCart();
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '商品已刪除',
           icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-          padding: '1em',
-          position: 'bottom-end',
         });
       })
       .catch(err => {
         console.log(err);
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '商品刪除失敗',
           icon: 'error',
-          showConfirmButton: false,
-          timer: 1500,
-          padding: '1em',
-          position: 'bottom-end',
         });
       });
     },
@@ -196,25 +185,15 @@ new Vue({
         vm.isLoading = false;
         vm.getCart();
         vm.cartTotal = 0;
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '商品已全部刪除',
           icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-          padding: '1em',
-          position: 'bottom-end',
         });
       }).catch(err => {
         console.log(err);
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '商品刪除失敗',
           icon: 'error',
-          showConfirmButton: false,
-          timer: 1500,
-          padding: '1em',
-          position: 'bottom-end',
         });
       });
     },
@@ -226,14 +205,9 @@ new Vue({
       axios.post(url, order).then(res =>{
         vm.isLoading = false;
         // 跳出提示訊息
-        Swal.fire({
-          toast: true,
+        Toast.fire({
           title: '訂單完成',
           icon: 'success',
-          showConfirmButton: false,
-          timer: 2500,
-          padding: '1em',
-          position: 'bottom-end',
         });
         $('#orderModal').modal('hide');
         //重新渲染購物車
@@ -245,4 +219,3 @@ new Vue({
     }
   }
 })
-    

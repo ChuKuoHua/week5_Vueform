@@ -1,7 +1,7 @@
 $btnColor : #380606;
 $while : #fff;
 $addcart: #b96022;
-$disabled:#5a5555;
+$disabled:#272a2b;
 
 .ls-1{
   letter-spacing: 1px;
@@ -194,6 +194,7 @@ $disabled:#5a5555;
 .shop-cart{
   position: fixed;
   bottom: 10px;
+  right: 50px;
   z-index: 1000;
 }
 .list-cart{
@@ -202,7 +203,8 @@ $disabled:#5a5555;
   top: auto!important;
   width: 535px;
   bottom: 15px !important;
-  left: -225px !important;
+  left: auto !important;
+  right: 280px !important;
   transform: translate3d(240px, -40px, 0px) !important;
   padding: 0 !important;
 }
@@ -210,6 +212,9 @@ $disabled:#5a5555;
   position: fixed !important;
   top: auto!important;
   bottom: 5px !important;
+  width: 200px;
+  left: auto !important;
+  right: 300px !important;
   padding: 10px;
   text-align: center;
   background-color: #9a959552;
