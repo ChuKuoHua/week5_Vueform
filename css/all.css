@@ -391,7 +391,8 @@ a {
 .numbox {
   border: 0 !important;
   -webkit-box-shadow: 0 1px 3px inset;
-  box-shadow: 0 1px 3px inset; }
+  box-shadow: 0 1px 3px inset;
+  width: 50% !important; }
 
 .num-btnbox {
   border: 0px;
